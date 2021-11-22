@@ -22,7 +22,7 @@ active"><a href=../04_pegasus/0503deploy.html><b>4.3</b>Pegasus模型部署
 </code></pre></div><p>输出</p><pre><code>model_name:  pegasus
 endpoint_ecr_image_path:  847380964353.dkr.ecr.ap-northeast-1.amazonaws.com/pegasus-hp
 &lt;&lt;&lt; Completed model endpoint deployment. pegasus
-</code></pre><p><img src=../pics/02pegasus/14.png alt></p><p>当状态变为<code>InService</code>即代表部署完成</p><p>在部署结束后，看到SageMaker控制台生成了对应的endpoint,可以使用如下客户端代码测试调用</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>%%</span>time 
+</code></pre><p><img src=../14.png alt></p><p>当状态变为<code>InService</code>即代表部署完成</p><p>在部署结束后，看到SageMaker控制台生成了对应的endpoint,可以使用如下客户端代码测试调用</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>%%</span>time 
 
 <span style=color:#f92672>from</span> boto3.session <span style=color:#f92672>import</span> Session
 <span style=color:#f92672>import</span> json

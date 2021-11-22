@@ -31,7 +31,7 @@ endpoint_ecr_image_path:  847380964353.dkr.ecr.ap-northeast-1.amazonaws.com/pega
 <<< Completed model endpoint deployment. pegasus
 ```
 
-![](../pics/02pegasus/14.png)
+![](../14.png)
 
 当状态变为`InService`即代表部署完成
 
