@@ -32,7 +32,7 @@ pre = "<b>4.2</b>"
 
 我们可以看到，在训练时，日志中有如下的记录`loading weights file models/pretrain/pegasus/checkpoint-46314/pytorch_model.bin`说明模型是导入了一个之前训练的基础版本，也可以通过训练的loss值以及最终的rouge指标判断出这个结果是增强训练产生的。
 
-![](./pics/02pegasus/13.png)
+![](../pics/02pegasus/13.png)
 
 同样的，我们可以利用本地推理进行测试。
 

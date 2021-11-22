@@ -12,12 +12,12 @@ active"><a href=../04_pegasus/0501train.html><b>4.1</b> Pegasus模型训练
 <i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/04_pegasus/0503deploy.html title=Pegasus模型部署 class=dd-item><a href=../04_pegasus/0503deploy.html><b>4.3</b>Pegasus模型部署
 <i class="fas fa-check read-icon"></i></a></li></ul></li></ul><section id=prefooter><hr><ul><li><a class=padding href=# data-clear-history-toggle><i class="fas fa-history fa-fw"></i>Clear History</a></li></ul></section><section id=footer><left><h5 class=copyright>&copy; 2019 Amazon Web Services, Inc. or its Affiliates. All rights reserved.<h5></left></section></div></nav><section id=body><div id=overlay></div><div class="padding highlightable"><div><div id=top-bar><div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb><span id=sidebar-toggle-span><a href=# id=sidebar-toggle data-sidebar-toggle><i class="fa fa-bars"></i></a></span><span class=links><a href=../>10 lines code to be an NLP expert!</a> > <a href=../04_pegasus.html>动手实验4: 基于Amazon SageMaker的Pegasus摘要模型训练动手实验</a> > Pegasus模型训练</span></div></div></div><div id=chapter><div id=body-inner><h1>Pegasus模型训练</h1><p>我们现在会用sagemaker进行一个pegasus模型的本地训练，使用ML.P3.2xlarge机型。</p><h2 id=数据准备>数据准备</h2><p>首先下载代码</p><pre><code>cd SageMaker
 git clone https://github.com/HaoranLv/nlp_transformer.git
-</code></pre><p>然后打开文件 <code>hp_main.ipynb</code>，逐行运行。</p><p>首先安装环境</p><p><img src=./pics/02pegasus/05.png alt></p><p>然后处理数据<code>hp_data.ipynb</code>，切分train/test。
+</code></pre><p>然后打开文件 <code>hp_main.ipynb</code>，逐行运行。</p><p>首先安装环境</p><p><img src=../pics/02pegasus/05.png alt></p><p>然后处理数据<code>hp_data.ipynb</code>，切分train/test。
 注意这里，为了快速产生结果，我们只要用1000条数据训练，100条测试/验证</p><pre><code>train_df.to_csv('./data/hp/summary/news_summary_cleaned_train.csv',index=False)
 test_df.to_csv('./data/hp/summary/news_summary_cleaned_test.csv',index=False)
 train_df[:1000].to_csv('./data/hp/summary/news_summary_cleaned_small_train.csv',index=False)
 test_df[:100].to_csv('./data/hp/summary/news_summary_cleaned_small_test.csv',index=False)
-</code></pre><p><img src=./pics/02pegasus/06.png alt></p><h2 id=模型训练>模型训练</h2><p>接下来我们运行训练，首先下载我们已经训练好的模型</p><pre><code>!mkdir -p models/pretrain/pegasus
+</code></pre><p><img src=../pics/02pegasus/06.png alt></p><h2 id=模型训练>模型训练</h2><p>接下来我们运行训练，首先下载我们已经训练好的模型</p><pre><code>!mkdir -p models/pretrain/pegasus
 !mkdir -p models/pretrain/bart
 
 !mkdir -p ./models/local_train/pegasus-hp
@@ -48,8 +48,8 @@ test_df[:100].to_csv('./data/hp/summary/news_summary_cleaned_small_test.csv',ind
 --save_total_limit=3 \
 --source_prefix &quot;summarize: &quot; &gt; train_pegasus.log
 </code></pre><p>训练完成后，会提示日志信息如下</p><ul><li>train
-<img src=./pics/02pegasus/07.png alt></li><li>eval
-<img src=./pics/02pegasus/08.png alt></li></ul><p>模型结果文件及相应的日志等信息会自动保存在<code>./models/local_train/pegasus-hp/checkpoint-500</code></p><p><img src=./pics/02pegasus/09.png alt></p><h2 id=结果本地测试>结果本地测试</h2><p>我们可以直接用这个产生的模型文件进行本地推理。注意这里的模型文件地址的指定为你刚刚训练产生的。</p><pre><code>import pandas as pd
+<img src=../pics/02pegasus/07.png alt></li><li>eval
+<img src=../pics/02pegasus/08.png alt></li></ul><p>模型结果文件及相应的日志等信息会自动保存在<code>./models/local_train/pegasus-hp/checkpoint-500</code></p><p><img src=../pics/02pegasus/09.png alt></p><h2 id=结果本地测试>结果本地测试</h2><p>我们可以直接用这个产生的模型文件进行本地推理。注意这里的模型文件地址的指定为你刚刚训练产生的。</p><pre><code>import pandas as pd
 df=pd.read_csv('./data/hp/summary/news_summary_cleaned_small_test.csv')
 print('原文:',df.loc[0,'text'])
 print('真实标签:',df.loc[0,'headlines'])

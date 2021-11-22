@@ -29,7 +29,7 @@ active"><a href=../04_pegasus/0502train.html><b>4.2</b>Pegasus模型增强训练
 --eval_steps=500 \
 --save_total_limit=3 \
 --source_prefix &quot;summarize: &quot; &gt; train_pegasus_2.log
-</code></pre><p>我们可以看到，在训练时，日志中有如下的记录<code>loading weights file models/pretrain/pegasus/checkpoint-46314/pytorch_model.bin</code>说明模型是导入了一个之前训练的基础版本，也可以通过训练的loss值以及最终的rouge指标判断出这个结果是增强训练产生的。</p><p><img src=./pics/02pegasus/13.png alt></p><p>同样的，我们可以利用本地推理进行测试。</p><p>本地测试，效果提升明显</p><pre><code>import pandas as pd
+</code></pre><p>我们可以看到，在训练时，日志中有如下的记录<code>loading weights file models/pretrain/pegasus/checkpoint-46314/pytorch_model.bin</code>说明模型是导入了一个之前训练的基础版本，也可以通过训练的loss值以及最终的rouge指标判断出这个结果是增强训练产生的。</p><p><img src=../pics/02pegasus/13.png alt></p><p>同样的，我们可以利用本地推理进行测试。</p><p>本地测试，效果提升明显</p><pre><code>import pandas as pd
 df=pd.read_csv('./data/hp/summary/news_summary_cleaned_small_test.csv')
 print('原文:',df.loc[0,'text'])
 print('真实标签:',df.loc[0,'headlines'])
