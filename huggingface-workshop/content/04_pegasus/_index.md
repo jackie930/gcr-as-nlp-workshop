@@ -9,7 +9,7 @@ pre = "<b>4. </b>"
 
 Pegasus是一个标准的Transformer架构，其全称是：利用提取的间隙句进行摘要概括的预训练模型（Pre-training with Extracted Gap-sentences for Abstractive Summarization）。就是设计一种间隙句生成的自监督预训练目标（GSG），来改进生成摘要的微调性能。
 
-![](./01.png)
+![](./pg01.png)
 
 ## GSG预训目标
 
