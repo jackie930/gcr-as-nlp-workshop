@@ -21,7 +21,7 @@ git clone https://github.com/HaoranLv/nlp_transformer.git
 
 首先安装环境
 
-![](../pics/02pegasus/05.png)
+![](./pics/02pegasus/05.png)
 
 然后处理数据`hp_data.ipynb`，切分train/test。
 注意这里，为了快速产生结果，我们只要用1000条数据训练，100条测试/验证
@@ -32,7 +32,7 @@ train_df[:1000].to_csv('./data/hp/summary/news_summary_cleaned_small_train.csv',
 test_df[:100].to_csv('./data/hp/summary/news_summary_cleaned_small_test.csv',index=False)
 ```
 
-![](../pics/02pegasus/06.png)
+![](./pics/02pegasus/06.png)
 
 ## 模型训练
 
@@ -77,14 +77,14 @@ test_df[:100].to_csv('./data/hp/summary/news_summary_cleaned_small_test.csv',ind
 
 训练完成后，会提示日志信息如下
 * train
-![](../pics/02pegasus/07.png)
+![](./pics/02pegasus/07.png)
 * eval
-![](../pics/02pegasus/08.png)
+![](./pics/02pegasus/08.png)
 
 
 模型结果文件及相应的日志等信息会自动保存在`./models/local_train/pegasus-hp/checkpoint-500`
 
-![](../pics/02pegasus/09.png)
+![](./pics/02pegasus/09.png)
 
 ## 结果本地测试
 
